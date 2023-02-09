@@ -11,60 +11,68 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# About the Test
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Routing
 
-### `npm run eject`
+This project has 3 pages as following :
+"/" for the home page
+"/news" to show all the news
+"/news/:id" to show news details
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Home Page ("/")
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Description : The home page is the home page of the projects, you can add your website name, cool images, etc in this page (optional).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+In order to pass the test, the home page should meet these requirements below :
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. "find news" text (Tips : wrap this text inside <Link/> component)
+2. When the "find news" is clicked it should navigate to "/news"
 
-## Learn More
+## News Page ("/news")
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Description : The News Page is the page to show all news data from [https://api.spaceflightnewsapi.net/v3/articles/](https://api.spaceflightnewsapi.net/v3/articles/). Before the api load the news page should have a "Loading..." text.
+After all the is rendered, when user clicks the news, it should navigate to "/news/:id". Id should matches the news id from the API.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+In order to pass the test, the home page should meet these requirements below :
 
-### Code Splitting
+1. A h1 tag containing "News" text on top of the page.
+2. Shows "Loading..." text before the API responds with the news data.
+3. Render all news data (10 news data in total) inside <Link/> component and wrap them inside <li></li> tag. For test purpose please add data-testid = id to the <Link> component like the example below :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+<li>
+    <Link to={data.id} data-testid={data.id}>
+        <h3>{data.title}</h3>
+    </Link>
+</li>
+```
 
-### Analyzing the Bundle Size
+You can then render anything inside the <Link/> component such as news title. 4. When the Link is clicked it should navigate to "/news/:id" with :id matching as the data id from the API.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## News Details Page ("/news/:id")
 
-### Making a Progressive Web App
+Description : this page should show the news with the matching news id with :id in more details. This page should get the data from the API [https://api.spaceflightnewsapi.net/v3/articles/${id}](https://api.spaceflightnewsapi.net/v3/articles/18120)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+In order to pass the test, the home page should meet these requirements below :
 
-### Advanced Configuration
+1. Shows "Loading..." text before the API responds with the news data.
+2. Renders news id and news title from the API. When calling the api the id should match with the :id params. For example "/news/18120" should fetch the data from [https://api.spaceflightnewsapi.net/v3/articles/18120](https://api.spaceflightnewsapi.net/v3/articles/18120). For more details this example might help you :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+//The title and the id must be rendered to pass the test
+<div>
+    <h2>{news.title}</h2>
+    <h3>{news.id}</h3>
+</div>
+```
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. Shows "Cannot found data" text when there's no data responded by the API. for example "/news/12345" should render "Cannot found data" text on the screen. In order to pass the test, please DON'T use nested ternary operator.
