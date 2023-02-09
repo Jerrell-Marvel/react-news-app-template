@@ -23,10 +23,10 @@ Builds the app for production to the `build` folder.\
 
 ## Routing
 
-This project has 3 pages as following :
-"/" for the home page
-"/news" to show all the news
-"/news/:id" to show news details
+This project has 3 pages as following :\
+"/" for the home page\
+"/news" to show all the news\
+"/news/:id" to show news details\
 
 ## Home Page ("/")
 
@@ -34,7 +34,7 @@ Description : The home page is the home page of the projects, you can add your w
 
 In order to pass the test, the home page should meet these requirements below :
 
-1. "find news" text (Tips : wrap this text inside <Link/> component)
+1. "find news" text (Tips : wrap this text inside Link component)
 2. When the "find news" is clicked it should navigate to "/news"
 
 ## News Page ("/news")
@@ -46,7 +46,7 @@ In order to pass the test, the home page should meet these requirements below :
 
 1. A h1 tag containing "News" text on top of the page.
 2. Shows "Loading..." text before the API responds with the news data.
-3. Render all news data (10 news data in total) inside <Link/> component and wrap them inside <li></li> tag. For test purpose please add data-testid = id to the <Link> component like the example below :
+3. Render all news data (10 news data in total) inside Link component and wrap them inside li tag. For test purpose please add data-testid = id to the Link component like the example below :
 
 ```
 <li>
@@ -56,7 +56,7 @@ In order to pass the test, the home page should meet these requirements below :
 </li>
 ```
 
-You can then render anything inside the <Link/> component such as news title. 4. When the Link is clicked it should navigate to "/news/:id" with :id matching as the data id from the API.
+You can then render anything inside the Link component such as news title. 4. When the Link is clicked it should navigate to "/news/:id" with :id matching as the data id from the API.
 
 ## News Details Page ("/news/:id")
 
