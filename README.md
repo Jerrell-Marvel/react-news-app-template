@@ -32,17 +32,17 @@ This project has 3 pages as following :\
 
 Description : The home page is the home page of the projects, you can add your website name, cool images, etc in this page (optional).
 
-In order to pass the test, the home page should meet these requirements below :
+### In order to pass the test, the home page should meet these requirements below :
 
-1. "find news" text (Tips : wrap this text inside Link component)
-2. When the "find news" is clicked it should navigate to "/news"
+1. It should renders a "find news" text (Tips : wrap this text inside Link component)
+2. When the "find news" text is clicked it should navigate to "/news"
 
 ## News Page ("/news")
 
-Description : The News Page is the page to show all news data from [https://api.spaceflightnewsapi.net/v3/articles/](https://api.spaceflightnewsapi.net/v3/articles/). Before the api load the news page should have a "Loading..." text.
-After all the is rendered, when user clicks the news, it should navigate to "/news/:id". Id should matches the news id from the API.
+Description : The News Page is the page to show all news data from [https://api.spaceflightnewsapi.net/v3/articles/](https://api.spaceflightnewsapi.net/v3/articles/). Before the api loads the news page should have a "Loading..." text.
+After all the news is rendered, when user clicks the news, it should navigate to "/news/:id". Id should matches the news id from the API.
 
-In order to pass the test, the home page should meet these requirements below :
+### In order to pass the test, the home page should meet these requirements below :
 
 1. A h1 tag containing "News" text on top of the page.
 2. Shows "Loading..." text before the API responds with the news data.
@@ -56,13 +56,14 @@ In order to pass the test, the home page should meet these requirements below :
 </li>
 ```
 
-You can then render anything inside the Link component such as news title. 4. When the Link is clicked it should navigate to "/news/:id" with :id matching as the data id from the API.
+You can then render anything inside the Link component such as news title.\
+4. When the Link is clicked it should navigate to "/news/:id" with :id matching as the data id from the API.
 
 ## News Details Page ("/news/:id")
 
 Description : this page should show the news with the matching news id with :id in more details. This page should get the data from the API [https://api.spaceflightnewsapi.net/v3/articles/${id}](https://api.spaceflightnewsapi.net/v3/articles/18120)
 
-In order to pass the test, the home page should meet these requirements below :
+### In order to pass the test, the home page should meet these requirements below :
 
 1. Shows "Loading..." text before the API responds with the news data.
 2. Renders news id and news title from the API. When calling the api the id should match with the :id params. For example "/news/18120" should fetch the data from [https://api.spaceflightnewsapi.net/v3/articles/18120](https://api.spaceflightnewsapi.net/v3/articles/18120). For more details this example might help you :
