@@ -27,7 +27,7 @@ describe("Routing system", () => {
     const { user } = renderWithRouter(<App />);
     const link = screen.getByText(/find news/i);
     await user.click(link);
-    const newsText = screen.getByText(/test/i);
+    const newsText = screen.getByRole("heading", { name: /News/i });
     expect(newsText).toBeInTheDocument();
   });
 
